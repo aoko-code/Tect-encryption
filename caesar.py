@@ -1,4 +1,5 @@
 #create a function
+message = input("Enter the message: ")
 def caesar_cipher(text, shift, mode='encrypt'):
     result = ""
     for char in text:
@@ -12,10 +13,9 @@ def caesar_cipher(text, shift, mode='encrypt'):
         else:
             result += char
     return result
-plaintext = "HELLO WORLD!"
 shift = 3
 
-encrypted = caesar_cipher(plaintext, shift, 'encrypt')
+encrypted = caesar_cipher(message, shift, 'encrypt')
 print(f"Encrypted: {encrypted}")
 
 decrypted = caesar_cipher(encrypted, shift, 'dencrypt')
