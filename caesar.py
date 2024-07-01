@@ -8,17 +8,21 @@ def caesar_cipher(text, key, mode):
         if char.isalpha():
             ascii_offset = 65 if char.isupper() else 97
             if mode == "encrypt":
-                shifted = (ord(char) - ascii_offset + key) % 26
+                encrypted = (ord(char) - ascii_offset + key) % 26
+                result += chr(encrypted + ascii_offset)
             else:
-                shifted = (ord(char) - ascii_offset - key) % 26
-            result += chr(shifted + ascii_offset)
+                decrypted = (ord(char) - ascii_offset - key) % 26
+                result += chr(decrypted + ascii_offset)
         else:
             result += char
     return result
 
-encrypted = caesar_cipher(message, key, 'encrypt')
-print(f"Encrypted: {encrypted}")
-
-decrypted = caesar_cipher(encrypted, key, 'decrypt')
-print(f"Dencrypted: {decrypted}")
+if mode == 'encrypt':
+    encrypted = caesar_cipher(message, key, 'encrypt')
+    print(f"Message: {message}")
+    print(f"Encrypted: {encrypted}")
+else:
+    decrypted = caesar_cipher(message, key, 'decrypt')
+    print(f"Message: {message}")
+    print(f"Dencrypted: {decrypted}")
 
