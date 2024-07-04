@@ -3,9 +3,10 @@ from Crypto.Random import get_random_bytes
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Util.Padding import pad, unpad
 import binascii
+import getpass
 
 mode = input("Enter the mode(encrypt/ decrypt): ")
-password = input("Enter the password: ")
+password = getpass.getpass("Enter the password: ")
 
 def derive_key(password, salt):
     return PBKDF2(password, salt, dkLen=32)
