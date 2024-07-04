@@ -21,8 +21,10 @@ if mode == 'encrypt':
     encrypted = caesar_cipher(message, key, 'encrypt')
     print(f"Message: {message}")
     print(f"Encrypted: {encrypted}")
-else:
+elif mode == 'decrypt':
     decrypted = caesar_cipher(message, key, 'decrypt')
     print(f"Message: {message}")
     print(f"Dencrypted: {decrypted}")
 
+else:
+    print("please enter the correct mode")
