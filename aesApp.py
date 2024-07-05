@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import getpass
-from aescrypt import encrypt, decrypt
 
 class AesApp(tk.Tk):
     def __init__(self):
@@ -11,24 +10,6 @@ class AesApp(tk.Tk):
         self.geometry("400x300")
         self.mode_variable = tk.StringVar(value="encrypt")
         self.create_widgets()
-
-    def create_widgets(self):
-        ttk.Radiobutton(self, text="Encrypt", variable=self.mode_variable, value="encrypt").pack(pady=5)
-        ttk.Radiobutton(self, text="Decrypt", variable=self.mode_variable, value="decrypt").pack(pady=5)
-
-        ttk.Label(self, text="Message:").pack(pady=5)
-        self.message_entry = ttk.Entry(self, width=50)
-        self.message_entry.pack(pady=5)
-
-        ttk.Label(self, text="Password:").pack(pady=5)
-        self.password_entry = ttk.Entry(self, show="*", width=50)
-        self.password_entry.pack(pady=5)
-
-        ttk.Button(self, text="Process", command=self.process).pack(pady=20)
-
-        self.result_text = tk.Text(self, height=5, width=50)
-        self.result_text.pack(pady=5)
-
     def encrypt(message, password):
         salt = get_random_bytes(16)
         key = derive_key(password, salt)
@@ -47,6 +28,24 @@ class AesApp(tk.Tk):
         decrypted = unpad(cipher.decrypt(encrypted_bytes[32:]), AES.block_size)
 
         return decrypted.decode()
+
+    def create_widgets(self):
+        ttk.Radiobutton(self, text="Encrypt", variable=self.mode_variable, value="encrypt").pack(pady=5)
+        ttk.Radiobutton(self, text="Decrypt", variable=self.mode_variable, value="decrypt").pack(pady=5)
+
+        ttk.Label(self, text="Message:").pack(pady=5)
+        self.message_entry = ttk.Entry(self, width=50)
+        self.message_entry.pack(pady=5)
+
+        ttk.Label(self, text="Password:").pack(pady=5)
+        self.password_entry = ttk.Entry(self, show="*", width=50)
+        self.password_entry.pack(pady=5)
+
+        ttk.Button(self, text="Process", command=self.process).pack(pady=20)
+
+        self.result_text = tk.Text(self, height=5, width=50)
+        self.result_text.pack(pady=5)
+
 
     def process(self):
         mode = self.mode_variable.get()

@@ -5,8 +5,8 @@ from Crypto.Util.Padding import pad, unpad
 import binascii
 import getpass
 
-# mode = input("Enter the mode(encrypt/ decrypt): ")
-# password = getpass.getpass("Enter the password: ")
+mode = input("Enter the mode(encrypt/ decrypt): ")
+password = getpass.getpass("Enter the password: ")
 
 def derive_key(password, salt):
     return PBKDF2(password, salt, dkLen=32)
@@ -31,17 +31,17 @@ def decrypt(encrypted_hex, password):
     return decrypted.decode()
 
 
-# if mode.lower() == 'encrypt':
-#     message = input("Enter the message to encrypt: ")
-#     encrypted = encrypt(message, password)
-#     print(f"message: {message}")
-#     print(f"Encrypted (hex): {encrypted.hex()}")
-# elif mode.lower() == 'decrypt':
-#     encrypted_hex = input("Enter the encrypted message to decrypt: ")
-#     try:
-#         decrypted = decrypt(encrypted_hex, password)
-#         print(f"Decrypted message: {decrypted}")
-#     except(ValueError, KeyError):
-#         print("Failed! Incorrect password or corrupt ciphertext")
-# else:
-#     print("please enter the correct mode")
+if mode.lower() == 'encrypt':
+    message = input("Enter the message to encrypt: ")
+    encrypted = encrypt(message, password)
+    print(f"message: {message}")
+    print(f"Encrypted (hex): {encrypted.hex()}")
+elif mode.lower() == 'decrypt':
+    encrypted_hex = input("Enter the encrypted message to decrypt: ")
+    try:
+        decrypted = decrypt(encrypted_hex, password)
+        print(f"Decrypted message: {decrypted}")
+    except(ValueError, KeyError):
+        print("Failed! Incorrect password or corrupt ciphertext")
+else:
+    print("please enter the correct mode")
