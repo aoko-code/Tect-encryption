@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Encryption/Decryption App</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="POST">
+        <select name="mode">
+            <option value="encrypt">Encrypt</option>
+            <option value="decrypt">Decrypt</option>
+        </select><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <textarea name="message" placeholder="Message to encrypt"></textarea><br>
+        <textarea name="encrypted" placeholder="Encrypted message (in hex) to decrypt"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
