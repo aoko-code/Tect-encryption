@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Encryption/Decryption App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>Encryption/Decryption App</h1>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul>
+            <ul class="flash-messages">
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                    <li class="flash-message">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
     <form method="POST">
-        <select name="mode">
+        <select name="mode" id="mode">
             <option value="encrypt">Encrypt</option>
             <option value="decrypt">Decrypt</option>
         </select><br>
         <input type="password" name="password" placeholder="Password" required><br>
-        <textarea name="message" placeholder="Message to encrypt"></textarea><br>
-        <textarea name="encrypted" placeholder="Encrypted message (in hex) to decrypt"></textarea><br>
+        <textarea name="message" placeholder="Message to encrypt" rows="4"></textarea>
+        <textarea name="encrypted" placeholder="Encrypted message (in hex) to decrypt" rows="4"></textarea>
         <input type="submit" value="Submit">
     </form>
+    <script>
+        document.getElementById('mode').addEventListener('change', function() {
+            if (this.value === 'encrypt') {
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('encrypted').style.display = 'none';
+            } else {
+                document.getElementById('message').style.display = 'none';
+                document.getElementById('encrypted').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
