@@ -12,3 +12,4 @@ In this project you will be required to enter word you want to cipher and the mo
 This is a symmetric encryption algorithm developed by Joan Daemen(Thought it was a woman , had to look it up LOL) and Vincent Rijmen(and its also a coincidence that their second names end with "men" they are not brothers as I thought)
 It supports key sizes of 128, 192 and 256 bits. Considered to be vesy secure when used correctly.
 Used in protocols like TLS, SSH, AND WPA2(Wi-Fi encryption) 
+# aoko-code_AESEncryption.github.io
