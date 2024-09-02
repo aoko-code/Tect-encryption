@@ -13,7 +13,13 @@ This is a symmetric encryption algorithm developed by Joan Daemen(Thought it was
 It supports key sizes of 128, 192 and 256 bits. Considered to be vesy secure when used correctly.
 Used in protocols like TLS, SSH, AND WPA2(Wi-Fi encryption) 
 ### How to run the AES web application
+
+
 Fork the repository 
 Run app.py file to start the server
+![server](https://github.com/user-attachments/assets/f64c838b-ac48-4f09-977b-52fc8bcab17b)
 open the link provided http://127.0.0.1:5000/
+![app](https://github.com/user-attachments/assets/74f86756-0f2f-4540-9815-d49ff2ee63ce)
+
+
 Now you can interact with the application, feel free to contribute . 
